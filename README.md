@@ -1,2 +1,5 @@
-# APL-1001-deploy-and-manage-containers-with-azure-kubernetes-service.de-de
-German repo for APL-1001-deploy-and-manage-containers-with-azure-kubernetes-service
+# APL-1001: Bereitstellen und Verwalten von Containern mit Azure Kubernetes Service
+
+Dieses Repository enthält die Anweisungen und Ressourcen, die zum Abschließen der Übungen im Lernpfad „Bereitstellen und Verwalten von Containern mit Azure Kubernetes Service“ auf Microsoft Learn erforderlich sind.
+## Melden von Problemen
+Wenn bei den Übungen Probleme auftreten, melden Sie diese als **Issues** in diesem Repository.
