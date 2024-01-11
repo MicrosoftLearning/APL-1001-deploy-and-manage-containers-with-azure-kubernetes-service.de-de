@@ -32,12 +32,12 @@ In dieser Aufgabe erstellen Sie eine Azure Container Registry-Instanz.
 
     |Einstellung|Wert|
     |---|---|
-    |Subscription|Der Name des Azure-Abonnements, das Sie in dieser Übung verwenden|
+    |Abonnement|Der Name des Azure-Abonnements, das Sie in dieser Übung verwenden|
     |Ressourcengruppe|Der Name einer neuen Ressourcengruppe: **acr-01-RG**|
     |Registrierungsname|Einen gültigen, global eindeutigen Namen, der aus 5 bis 50 alphanumerischen Zeichen besteht|
     |Region|Eine beliebige Azure-Region, in der Sie eine Azure Container Registry-Instanz und einen AKS-Cluster erstellen können|
-    |Verfügbarkeitszonen|**None**|
-    |SKU|**Basic**|
+    |Verfügbarkeitszonen|**Keine**|
+    |SKU|**Grundlegend**|
 
 1. Wählen Sie auf der Seite **Containerregistrierungen** die Option **Überprüfen + erstellen** und auf der Registerkarte **Überprüfen + erstellen** die Option **Erstellen** aus.
 
@@ -53,7 +53,7 @@ In dieser Aufgabe erstellen Sie ein virtuelles Azure-Netzwerk und stellen einen 
 
     |Einstellung|Wert|
     |---|---|
-    |Subscription|Der Name des Azure-Abonnements, das Sie in der ersten Übung ausgewählt haben|
+    |Abonnement|Der Name des Azure-Abonnements, das Sie in der ersten Übung ausgewählt haben|
     |Ressourcengruppe|Der Name einer neuen Ressourcengruppe: **aks-01-RG**|
     |Name des virtuellen Netzwerks|**vnet-01**|
     |Region|Dieselbe Azure-Region, die Sie in der ersten Übung ausgewählt haben|
@@ -69,15 +69,15 @@ In dieser Aufgabe erstellen Sie ein virtuelles Azure-Netzwerk und stellen einen 
 
     |Einstellung|Wert|
     |---|---|
-    |Subscription|Der Name des Azure-Abonnements, das Sie in der ersten Übung ausgewählt haben|
+    |Abonnement|Der Name des Azure-Abonnements, das Sie in der ersten Übung ausgewählt haben|
     |Ressourcengruppe|**aks-01-RG**|
     |Voreingestellte Clusterkonfiguration|**Dev/Test**|
     |Kubernetes-Clustername|**aks-01**|
     |Region|Dieselbe Azure-Region, die Sie in der ersten Übung ausgewählt haben|
-    |Verfügbarkeitszonen|**None**|
+    |Verfügbarkeitszonen|**Keine**|
     |AKS-Tarif|**Free**|
     |Kubernetes-Version|Akzeptieren Sie den Standardwert.|
-    |automatische Upgrade|Disabled|
+    |automatische Upgrade|Deaktiviert|
     |Knotengröße|**Standard B4ms**|
     |Skalierungsmethode|**Manuell**|
     |Anzahl der Knoten|**2**|
@@ -105,9 +105,9 @@ In dieser Aufgabe erstellen Sie ein virtuelles Azure-Netzwerk und stellen einen 
     |Kubernetes-Dienstadressbereich|**172.16.0.0/22**|
     |Kubernetes-DNS-Dienst – IP-Adresse|**172.16.3.254**|
     |DNS-Namenspräfix|**aks-01-dns**|
-    |Privaten Cluster aktivieren|Disabled|
-    |Autorisierte IP-Adressbereiche festlegen|Disabled|
-    |Netzwerkrichtlinie|**None**|
+    |Privaten Cluster aktivieren|Deaktiviert|
+    |Autorisierte IP-Adressbereiche festlegen|Deaktiviert|
+    |Netzwerkrichtlinie|**Keine**|
 
 1. Wählen Sie auf der Registerkarte **Netzwerke** der Seite **Kubernetes-Cluster erstellen** die Registerkarte **Knotenpools** aus.
 
@@ -121,13 +121,13 @@ In dieser Aufgabe erstellen Sie ein virtuelles Azure-Netzwerk und stellen einen 
     |Knotenpoolname|**w1pool**|
     |Mode|**Benutzer**|
     |Betriebssystemtyp|**Windows**|
-    |Verfügbarkeitszone|**None**|
-    |Azure Spot-Instanzen aktivieren|Disabled|
+    |Verfügbarkeitszone|**Keine**|
+    |Azure Spot-Instanzen aktivieren|Deaktiviert|
     |Knotengröße|**Standard B4s_v2**|
     |Skalierungsmethode|**Manuell**|
     |Anzahl der Knoten|**2**|
     |Max. Pods pro Knoten|**30**|
-    |Öffentliche IP-Adresse pro Knoten aktivieren|Disabled|
+    |Öffentliche IP-Adresse pro Knoten aktivieren|Deaktiviert|
 
    > **Hinweis:** Möglicherweise müssen Sie die vCPU-Kontingente erhöhen oder die VM-SKU ändern, um die Werte für Knotengröße und Knotenanzahl anzupassen. Informationen zum Erhöhen von vCPU-Kontingenten finden Sie im Microsoft Learn-Artikel [Erhöhen von vCPU-Kontingenten für die VM-Familie](https://learn.microsoft.com/en-us/azure/quotas/per-vm-quota-requests).
 
@@ -142,20 +142,20 @@ In dieser Aufgabe erstellen Sie ein virtuelles Azure-Netzwerk und stellen einen 
 In dieser Übung erstellen Sie Linux- und Windows-basierte Docker-Images und pushen sie in die Azure Container Registry-Instanz, die Sie zuvor in dieser Übung erstellt haben.
 
 ### Aufgabe 1: Erstellen eines Linux-Containerimages und Speichern in ACR
-In dieser Aufgabe verwenden Sie einen ACR-Task, um ein Linux-Containerimage zu erstellen und es automatisch in ACR zu pushen.
+In dieser Aufgabe verwenden Sie eine ACR-Aufgabe, um ein Linux-Containerimage zu erstellen und es automatisch in ACR zu pushen.
 
 1. Wählen Sie im Azure-Portal das Symbol **Cloud Shell** aus.
 1. Wählen Sie bei Aufforderung zur Auswahl von **Bash** oder **PowerShell** die Option **Bash** aus. 
 1. Wenn Sie dazu aufgefordert werden, wählen Sie **Speicher erstellen** aus, und warten Sie, bis der Azure Cloud Shell-Bereich angezeigt wird. 
 1. Stellen Sie sicher, dass **Bash** im Dropdownmenü oben links im Cloud Shell-Bereich angezeigt wird.
-1. Erstellen Sie in der Bash-Sitzung in Cloud Shell ein Verzeichnis, das das Dockerfile für das Linux-Image hostet, und wechseln Sie aus dem aktuellen Verzeichnis zu diesem, indem Sie die folgenden Befehle ausführen:
+1. Erstellen Sie in der Bash-Sitzung in Cloud Shell ein Verzeichnis, das die Dockerfile-Datei für das Linux-Image hostet, und wechseln Sie aus dem aktuellen Verzeichnis dahin, indem Sie die folgenden Befehle ausführen:
 
    ```bash
    mkdir ~/image-l01
    cd ~/image-l01
    ```
 
-1. Verwenden Sie in der Bash-Sitzung von Azure Cloud Shell den integrierten Editor, um eine Datei mit dem Namen „server.js“ im Verzeichnis „image-l01“ zu erstellen und den folgenden Inhalt in diese zu kopieren:
+1. Verwenden Sie in der Bash-Sitzung von Azure Cloud Shell den integrierten Editor, um eine Datei mit dem Namen „server.js“ im Verzeichnis „image-l01“ zu erstellen und den folgenden Inhalt dahin zu kopieren:
 
    ```js
    const http = require('http')
@@ -171,7 +171,7 @@ In dieser Aufgabe verwenden Sie einen ACR-Task, um ein Linux-Containerimage zu e
 
    > **Hinweis:** Nach der Ausführung zeigt der resultierende Node.js-Code die Meldung **Hello World from Node** an.
 
-1. Verwenden Sie in der Bash-Sitzung von Azure Cloud Shell den integrierten Editor erneut, um eine Datei mit dem Namen „package.json“ im Verzeichnis „image-l01“ zu erstellen und den folgenden Inhalt in diese zu kopieren:
+1. Verwenden Sie in der Bash-Sitzung von Azure Cloud Shell den integrierten Editor erneut, um eine Datei mit dem Namen „package.json“ im Verzeichnis „image-l01“ zu erstellen und den folgenden Inhalt dahin zu kopieren:
 
    ```json
    {
@@ -188,7 +188,7 @@ In dieser Aufgabe verwenden Sie einen ACR-Task, um ein Linux-Containerimage zu e
    ```
 
 1. Speichern Sie die Änderungen an der Datei, und schließen Sie sie, um zur Bash-Eingabeaufforderung zurückzukehren.
-1. Verwenden Sie in der Bash-Sitzung von Azure Cloud Shell den integrierten Editor erneut, um eine Datei mit dem Namen „Dockerfile“ im Verzeichnis „image-l01“ zu erstellen und den folgenden Inhalt in diese zu kopieren:
+1. Verwenden Sie in der Bash-Sitzung von Azure Cloud Shell den integrierten Editor erneut, um eine Datei mit dem Namen „Dockerfile“ im Verzeichnis „image-l01“ zu erstellen und den folgenden Inhalt dahin zu kopieren:
 
    ```Dockerfile
    FROM node:20.2-alpine
@@ -199,32 +199,32 @@ In dieser Aufgabe verwenden Sie einen ACR-Task, um ein Linux-Containerimage zu e
    ```
 
 1. Speichern Sie die Änderungen an der Datei, und schließen Sie sie, um zur Bash-Eingabeaufforderung zurückzukehren.
-1. Suchen Sie in der Bash-Sitzung von Azure Cloud Shell den Namen Ihrer Azure Container Registry-Instanz, die Sie zuvor in dieser Übung erstellt haben, und speichern Sie ihn in einer Variablen namens **$ACRNAME**, indem Sie die folgenden Befehle ausführen:
+1. Identifizieren Sie in der Bash-Sitzung von Azure Cloud Shell den Namen Ihrer Azure Container Registry, die Sie zuvor in dieser Übung erstellt haben, und speichern Sie ihn in einer Variablen namens **$ACRNAME**, indem Sie die folgenden Befehle ausführen:
 
    ```azurecli
    ACR_RGNAME='acr-01-RG'
    ACR_NAME=$(az acr list --resource-group $ACR_RGNAME --query "[].name" --output tsv)
    ```
 
-1. Erstellen Sie in der Bash-Sitzung von Azure Cloud Shell ein Docker-Image, das auf dem im aktuellen Verzeichnis gespeicherten Dockerfile basiert, und pushen Sie es automatisch an die Azure Container Registry-Instanz, deren Name in der Variablen **$ACRNAME** gespeichert ist, indem Sie den folgenden Befehl ausführen (achten Sie darauf, dass der nachgestellte Punkt vorhanden ist):
+1. Erstellen Sie in der Bash-Sitzung von Azure Cloud Shell ein Docker-Image, das auf der im aktuellen Verzeichnis gespeicherten Dockerfile-Datei basiert, und pushen Sie es automatisch an die Azure Container Registry, deren Name in der Variablen **$ACRNAME** gespeichert ist, indem Sie den folgenden Befehl ausführen (stellen Sie sicher, dass Sie den nachgestellten Punkt einschließen):
 
    ```azurecli
    az acr build --registry $ACR_NAME --image hellofromnode:v1.0 .
    ```
 
-   > **Hinweis:** Verfolgen Sie den Buildfortschritt, und vergewissern Sie sich, dass der Vorgang erfolgreich abgeschlossen wird. Das sollte weniger als eine Minute dauern.
+   > **Hinweis:** Verfolgen Sie den Fortschritt der Erstellung, und stellen Sie sicher, dass sie erfolgreich abgeschlossen wird. Das sollte weniger als eine Minute dauern.
 
-### Aufgabe 2: Erstellen eines Windows-Containerimages und Speichern in ACR
-In dieser Aufgabe verwenden Sie einen ACR-Task, um ein Windows-Containerimage zu erstellen und es automatisch in ACR zu pushen.
+### Aufgabe 2: Erstellen eines Windows-Containerimages und Speichern in ACR
+In dieser Aufgabe verwenden Sie eine ACR-Aufgabe, um ein Windows-Containerimage zu erstellen und es automatisch in ACR zu pushen.
 
-1. Erstellen Sie in der Bash-Sitzung in Cloud Shell ein Verzeichnis, das das Dockerfile für das Windows-Image hostet, und wechseln Sie aus dem aktuellen Verzeichnis zu diesem, indem Sie die folgenden Befehle ausführen:
+1. Erstellen Sie in der Bash-Sitzung in Cloud Shell ein Verzeichnis, das die Dockerfile-Datei für das Windows-Image hostet, und wechseln Sie aus dem aktuellen Verzeichnis dahin, indem Sie die folgenden Befehle ausführen:
 
    ```bash
    mkdir ~/image-w01
    cd ~/image-w01
    ```
 
-1. Klonen Sie in der Bash-Sitzung von Azure Cloud Shell ein öffentliches GitHub-Repository, das die Dateien hostet, die Sie zum Erstellen des Windows-Images verwenden, und ändern Sie das aktuelle Verzeichnis in das geklonte Repository, indem Sie die folgenden Befehle ausführen:
+1. Klonen Sie in der Bash-Sitzung von Azure Cloud Shell ein öffentliches GitHub-Repository, das die Dateien hostet, die Sie zum Erstellen des Windows-Images verwenden, und wechseln Sie das aktuelle Verzeichnis in das geklonte Repository, indem Sie die folgenden Befehle ausführen:
 
    ```git
    git clone https://github.com/Azure-Samples/dotnetcore-docs-hello-world.git
@@ -233,15 +233,15 @@ In dieser Aufgabe verwenden Sie einen ACR-Task, um ein Windows-Containerimage zu
 
    > **Hinweis:** Das Repository enthält den Quellcode für eine .NET 7-Web-App, die die Meldung **Hello World from .NET 7** anzeigt.
 
-1. Erstellen Sie in der Bash-Sitzung von Azure Cloud Shell ein Docker-Image, das auf dem im aktuellen Verzeichnis gespeicherten Dockerfile basiert, und pushen Sie es automatisch an die Azure Container Registry-Instanz, deren Name in der Variablen **$ACRNAME** gespeichert ist, indem Sie den folgenden Befehl ausführen (achten Sie darauf, dass der nachgestellte Punkt vorhanden ist):
+1. Erstellen Sie in der Bash-Sitzung von Azure Cloud Shell ein Docker-Image, das auf der im aktuellen Verzeichnis gespeicherten Dockerfile-Datei basiert, und pushen Sie es automatisch an die Azure Container Registry, deren Name in der Variablen **$ACRNAME** gespeichert ist, indem Sie den folgenden Befehl ausführen (stellen Sie sicher, dass Sie den nachgestellten Punkt einschließen):
 
    ```azurecli
    az acr build --registry $ACR_NAME --image hellofromdotnet:v1.0 --platform windows --file Dockerfile.windows .
    ```
 
-   > **Hinweis:** Der Name des Dockerfile, das den Windows-Imagebuild definiert, lautet **Dockerfile.windows**.
+   > **Hinweis:** Der Name der Dockerfile-Datei, die den Windows-Imagebuild definiert, lautet **Dockerfile.windows**.
 
-   > **Hinweis:** Verfolgen Sie den Buildfortschritt, und vergewissern Sie sich, dass der Vorgang erfolgreich abgeschlossen wird. Das sollte weniger als drei Minuten dauern.
+   > **Hinweis:** Verfolgen Sie den Fortschritt der Erstellung, und stellen Sie sicher, dass sie erfolgreich abgeschlossen wird. Das sollte weniger als 3 Minuten dauern.
 
 1. Schließen Sie den Azure Cloud Shell-Bereich.
 1. Navigieren Sie im Azure-Portal zur Seite **Containerregistrierungen**, und wählen Sie den Eintrag aus, der die Containerregistrierung darstellt, in die Sie beide Images gepusht haben.
