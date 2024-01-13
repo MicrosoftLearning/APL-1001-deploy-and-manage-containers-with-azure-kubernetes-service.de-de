@@ -11,7 +11,7 @@ Exercise:
 Dieses geführte Projekt besteht aus den folgenden Übungen:
 
 + **Übung 1: Bereitstellen von Azure Container Registry (ACR) und Azure Kubernetes Service (AKS)**
-+ Übung 2: Erstellen von Linux- und Windows-Containerimages und Speichern in Azure Container Registry
++ Übung 2: Erstellen von Linux- und Windows-Containerimages und Speichern in Azure Container Registry.
 + Übung 3: Bereitstellen von Containerimages in Azure Kubernetes Service
 + Übung 4: Überprüfen der Bereitstellung und Aufheben der Bereitstellung aller Ressourcen
 
@@ -37,8 +37,8 @@ In dieser Aufgabe erstellen Sie eine Azure Container Registry-Instanz.
     |Ressourcengruppe|Der Name einer neuen Ressourcengruppe: **acr-01-RG**|
     |Registrierungsname|Einen gültigen, global eindeutigen Namen, der aus 5 bis 50 alphanumerischen Zeichen besteht|
     |Region|Eine beliebige Azure-Region, in der Sie eine Azure Container Registry-Instanz und einen AKS-Cluster erstellen können|
-    |Verfügbarkeitszonen|**None**|
-    |SKU|**Basic**|
+    |Verfügbarkeitszonen|**Keine**|
+    |SKU|**Grundlegend**|
 
 1. Wählen Sie auf der Seite **Containerregistrierungen** die Option **Überprüfen + erstellen** und auf der Registerkarte **Überprüfen + erstellen** die Option **Erstellen** aus.
 
@@ -54,7 +54,7 @@ In dieser Aufgabe erstellen Sie ein virtuelles Azure-Netzwerk und stellen einen 
 
     |Einstellung|Wert|
     |---|---|
-    |Subscription|Der Name des Azure-Abonnements, das Sie in der ersten Übung dieses Labs ausgewählt haben|
+    |Abonnement|Der Name des Azure-Abonnements, das Sie in der ersten Übung dieses Labs ausgewählt haben|
     |Ressourcengruppe|Der Name einer neuen Ressourcengruppe: **aks-01-RG**|
     |Name des virtuellen Netzwerks|**vnet-01**|
     |Region|Dieselbe Azure-Region, die Sie in der ersten Übung dieses Labs ausgewählt haben|
@@ -70,15 +70,15 @@ In dieser Aufgabe erstellen Sie ein virtuelles Azure-Netzwerk und stellen einen 
 
     |Einstellung|Wert|
     |---|---|
-    |Subscription|Der Name des Azure-Abonnements, das Sie in der ersten Übung dieses Labs ausgewählt haben|
+    |Abonnement|Der Name des Azure-Abonnements, das Sie in der ersten Übung dieses Labs ausgewählt haben|
     |Ressourcengruppe|**aks-01-RG**|
     |Voreingestellte Clusterkonfiguration|**Dev/Test**|
     |Kubernetes-Clustername|**aks-01**|
     |Region|Dieselbe Azure-Region, die Sie in der ersten Übung dieses Labs ausgewählt haben|
-    |Verfügbarkeitszonen|**None**|
+    |Verfügbarkeitszonen|**Keine**|
     |AKS-Tarif|**Free**|
     |Kubernetes-Version|Akzeptieren Sie den Standardwert.|
-    |automatische Upgrade|Disabled|
+    |automatische Upgrade|Deaktiviert|
     |Knotengröße|**Standard B4ms**|
     |Skalierungsmethode|**Manuell**|
     |Anzahl der Knoten|**2**|
@@ -106,9 +106,9 @@ In dieser Aufgabe erstellen Sie ein virtuelles Azure-Netzwerk und stellen einen 
     |Kubernetes-Dienstadressbereich|**172.16.0.0/22**|
     |Kubernetes-DNS-Dienst – IP-Adresse|**172.16.3.254**|
     |DNS-Namenspräfix|**aks-01-dns**|
-    |Privaten Cluster aktivieren|Disabled|
-    |Autorisierte IP-Adressbereiche festlegen|Disabled|
-    |Netzwerkrichtlinie|**None**|
+    |Privaten Cluster aktivieren|Deaktiviert|
+    |Autorisierte IP-Adressbereiche festlegen|Deaktiviert|
+    |Netzwerkrichtlinie|**Keine**|
 
 1. Wählen Sie auf der Registerkarte **Netzwerke** der Seite **Kubernetes-Cluster erstellen** die Registerkarte **Knotenpools** aus.
 
@@ -122,13 +122,13 @@ In dieser Aufgabe erstellen Sie ein virtuelles Azure-Netzwerk und stellen einen 
     |Knotenpoolname|**w1pool**|
     |Mode|**Benutzer**|
     |Betriebssystemtyp|**Windows**|
-    |Verfügbarkeitszone|**None**|
-    |Azure Spot-Instanzen aktivieren|Disabled|
+    |Verfügbarkeitszone|**Keine**|
+    |Azure Spot-Instanzen aktivieren|Deaktiviert|
     |Knotengröße|**Standard B4s_v2**|
     |Skalierungsmethode|**Manuell**|
     |Anzahl der Knoten|**2**|
     |Max. Pods pro Knoten|**30**|
-    |Öffentliche IP-Adresse pro Knoten aktivieren|Disabled|
+    |Öffentliche IP-Adresse pro Knoten aktivieren|Deaktiviert|
 
    > **Hinweis:** Möglicherweise müssen Sie die vCPU-Kontingente erhöhen oder die VM-SKU ändern, um die Werte für Knotengröße und Knotenanzahl anzupassen. Informationen zum Erhöhen von vCPU-Kontingenten finden Sie im Microsoft Learn-Artikel [Erhöhen von vCPU-Kontingenten für die VM-Familie](https://learn.microsoft.com/en-us/azure/quotas/per-vm-quota-requests).
 

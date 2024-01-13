@@ -9,8 +9,8 @@ Exercise:
 
 Dieses geführte Projekt besteht aus den folgenden Übungen:
 
-+ Übung 1: Bereitstellen von Azure Container Registry (ACR) und Azure Kubernetes Service (AKS)
-+ Übung 2: Erstellen von Linux- und Windows-Containerimages und Speichern in Azure Container Registry
++ Übung 1: Bereitstellen von Azure Container Registry (ACR) und Azure Kubernetes Service (AKS).
++ Übung 2: Erstellen von Linux- und Windows-Containerimages und Speichern in Azure Container Registry.
 + **Übung 3: Bereitstellen von Containerimages in Azure Kubernetes Service**
 + Übung 4: Überprüfen der Bereitstellung und Aufheben der Bereitstellung aller Ressourcen
 
