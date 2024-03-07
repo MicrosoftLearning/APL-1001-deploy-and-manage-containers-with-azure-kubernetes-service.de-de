@@ -79,6 +79,7 @@ In dieser Aufgabe erstellen Sie ein virtuelles Azure-Netzwerk und stellen ein AK
    |AKS-Tarif|**Free**|
    |Kubernetes-Version|Akzeptieren Sie den Standardwert.|
    |automatische Upgrade|Deaktiviert|
+   |Kanaltyp für Knotensicherheit|**Keine**|
    |Authentifizierung und Autorisierung|**Lokale Konten mit Kubernetes RBAC**|
 
 1. Führen Sie auf der Registerkarte **Knotenpools** der Seite **Kubernetes-Cluster erstellen** die folgenden Aufgaben aus:
@@ -93,27 +94,8 @@ In dieser Aufgabe erstellen Sie ein virtuelles Azure-Netzwerk und stellen ein AK
 
    > **Hinweis:** Sie fügen dem Cluster einen Windows-Knotenpool hinzu. Hierfür muss die Netzwerkkonfiguration von **Kubenet** (Standardeinstellung) in **Azure CNI** geändert werden. Die Kubenet-Netzwerkkonfiguration unterstützt keine Windows-Knotenpools.
 
-1. Wählen Sie wieder auf der Registerkarte **Knotenpools** der Seite **Kubernetes-Cluster erstellen** die Option **+ Knotenpool hinzufügen** aus.
-1. Geben Sie auf der Seite **Knotenpool hinzufügen** die folgenden Einstellungen an:
-
-   |Einstellung|Wert|
-   |---|---|
-   |Knotenpoolname|**w1pool**|
-   |Mode|**Benutzer**|
-   |Betriebssystemtyp|**Windows**|
-   |Verfügbarkeitszone|**Keine**|
-   |Azure Spot-Instanzen aktivieren|Deaktiviert|
-   |Knotengröße|**B4ms**|
-   |Skalierungsmethode|**Manuell**|
-   |Anzahl der Knoten|**2**|
-   |Max. Pods pro Knoten|**30**|
-   |Öffentliche IP-Adresse pro Knoten aktivieren|Deaktiviert|
-
-   > **Hinweis:** Möglicherweise müssen Sie hier auch die vCPU-Kontingente erhöhen oder die VM-SKU ändern, um die Werte für Knotengröße und Knotenanzahl anzupassen.
-
-1. Wählen Sie auf der Seite **Knotenpool hinzufügen** die Option **Hinzufügen** aus.
 1. Wählen Sie wieder auf der Registerkarte **Knotenpools** der Seite **Kubernetes-Cluster erstellen** die Option **Weiter** aus.
-1. Wählen Sie auf der Registerkarte **Networking** der Seite **Kubernetes-Cluster erstellen** die Option **Azure CNI** aus und aktivieren Sie das Kontrollkästchen **Ihr eigenes virtuelles Netzwerk** in der Dropdownliste **virtuelles Netzwerk**, wählen Sie **vnet-01-** aus, und wählen Sie unter dem **Cluster-Subnetz-** Textfeld **verwaltete Subnetzkonfiguration** aus.
+1. Wählen Sie auf der Registerkarte **Netzwerk** der Seite **Kubernetes-Cluster erstellen** die Option **Azure CNI** aus. Aktivieren Sie das Kontrollkästchen **Ihr eigenes virtuelles Netzwerk**. Wählen Sie in der Dropdownliste **Virtuelles Netzwerk** die Option **vnet-01** aus, und wählen Sie unter dem Textfeld **Cluster-Subnetz** die Option **Subnetzkonfiguration verwalten** aus.
 1. Wählen Sie auf der Seite **vnet-01 \| Subnetze** die Option **+ Subnetz** aus.
 1. Geben Sie auf der Seite **Subnetze hinzufügen** die folgenden Einstellungen an, und wählen Sie **Speichern** aus:
 
@@ -134,8 +116,30 @@ In dieser Aufgabe erstellen Sie ein virtuelles Azure-Netzwerk und stellen ein AK
    |DNS-Namenspräfix|**aks-01-dns**|
    |Netzwerkrichtlinie|**Keine**|
 
+1. Wählen Sie auf der Registerkarte **Netzwerk** der Seite **Kubernetes-Cluster erstellen** die Option **Zurück** aus.
+1. Wählen Sie wieder auf der Registerkarte **Knotenpools** der Seite **Kubernetes-Cluster erstellen** die Option **+ Knotenpool hinzufügen** aus.
+1. Geben Sie auf der Seite **Knotenpool hinzufügen** die folgenden Einstellungen an:
+
+   |Einstellung|Wert|
+   |---|---|
+   |Knotenpoolname|**w1pool**|
+   |Mode|**Benutzer**|
+   |Betriebssystemtyp|**Windows 2022**|
+   |Verfügbarkeitszone|**Keine**|
+   |Azure Spot-Instanzen aktivieren|Deaktiviert|
+   |Knotengröße|**B4ms**|
+   |Skalierungsmethode|**Manuell**|
+   |Anzahl der Knoten|**2**|
+   |Max. Pods pro Knoten|**30**|
+   |Öffentliche IP-Adresse pro Knoten aktivieren|Deaktiviert|
+
+   > **Hinweis:** Möglicherweise müssen Sie hier auch die vCPU-Kontingente erhöhen oder die VM-SKU ändern, um die Werte für Knotengröße und Knotenanzahl anzupassen.
+
+1. Wählen Sie auf der Seite **Knotenpool hinzufügen** die Option **Hinzufügen** aus.
+1. Wählen Sie wieder auf der Registerkarte **Knotenpools** der Seite **Kubernetes-Cluster erstellen** die Option **Weiter** aus.
 1. Wählen Sie auf der Registerkarte **Networking** der Seite **Kubernetes-Cluster erstellen** **Weiter** aus.
-1. Wählen Sie auf der Registerkarte **Integration** der Seite **Kubernetes-Cluster erstellen** in der Dropdownliste **Containerregistrierung** den Eintrag aus, der die Azure Container Registry-Instanz darstellt, die Sie in der vorherigen Übung erstellt haben, deaktivieren Sie das Kontrollkästchen **Empfohlene Warnungsregeln aktivieren**, stellen Sie sicher, dass die Option **Azure Policy** deaktiviert ist, und wählen Sie **Überprüfen + erstellen** aus.
+1. Wählen Sie auf der Registerkarte **Integration** der Seite **Kubernetes-Cluster erstellen** in der Dropdownliste **Containerregistrierung** den Eintrag aus, der die Azure Container Registry-Instanz darstellt, die Sie in der vorherigen Übung erstellt haben. Deaktivieren Sie das Kontrollkästchen **Empfohlene Warnungsregeln aktivieren**, stellen Sie sicher, dass die Option **Azure Policy** deaktiviert ist, und wählen Sie **Weiter** aus.
+1. Deaktivieren Sie auf der Registerkarte **Überwachung** der Seite **Kubernetes-Cluster erstellen** das Kontrollkästchen **Prometheus-Metriken aktivieren**, und wählen Sie dann **Überprüfen und erstellen** aus.
 1. Wählen Sie auf der Registerkarte **Überprüfen + erstellen** der Seite **Kubernetes-Cluster erstellen** die Option **Erstellen** aus.
 
    > **Hinweis:** Fahren Sie mit der nächsten Übung fort, ohne zu warten, bis die Bereitstellung des AKS-Clusters abgeschlossen ist. Die Bereitstellung dauert etwa fünf Minuten.
